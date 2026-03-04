@@ -10,19 +10,24 @@
 
   const ARTICLES = [
     {
-      title: 'Linear expectations, exponential games',
-      slug: 'linear-expectations-exponential-games',
-      monthYear: 'March 2026',
-    },
-    {
-      title: 'The post visual web',
-      slug: 'post-visual-web',
+      title: 'Feature led building vs user led building',
+      slug: 'feature-led-building-vs-user-led-building',
       monthYear: 'March 2026',
     },
     {
       title: 'What I do, and what I delegate to AI',
       slug: 'what-i-do-and-what-i-delegate-to-ai',
-      monthYear: 'March 2026',
+      monthYear: 'February 2026',
+    },
+    {
+      title: 'The post visual web',
+      slug: 'post-visual-web',
+      monthYear: 'February 2026',
+    },
+    {
+      title: 'Linear expectations, exponential games',
+      slug: 'linear-expectations-exponential-games',
+      monthYear: 'February 2026',
     },
   ];
 
