@@ -352,6 +352,53 @@
       }
     });
 
+    // Article pages: reading progress bar.
+    const article = document.querySelector('.article-content article');
+    if (article && !document.querySelector('[data-reading-progress]')) {
+      const shell = document.createElement('div');
+      shell.className = 'reading-progress';
+      shell.setAttribute('aria-hidden', 'true');
+      shell.setAttribute('data-reading-progress', '');
+
+      const bar = document.createElement('div');
+      bar.className = 'reading-progress__bar';
+      shell.appendChild(bar);
+      document.body.appendChild(shell);
+
+      let raf = 0;
+      let last = -1;
+
+      function compute() {
+        const rect = article.getBoundingClientRect();
+        const top = rect.top + window.scrollY;
+        const height = rect.height;
+        const viewport = window.innerHeight || 1;
+        const denom = Math.max(1, height - viewport);
+
+        const y = window.scrollY;
+        const raw = (y - top) / denom;
+        const p = Math.max(0, Math.min(1, raw));
+        return p;
+      }
+
+      function render() {
+        raf = 0;
+        const p = compute();
+        if (p === last) return;
+        last = p;
+        bar.style.transform = `scaleX(${p})`;
+      }
+
+      function schedule() {
+        if (raf) return;
+        raf = requestAnimationFrame(render);
+      }
+
+      window.addEventListener('scroll', schedule, { passive: true });
+      window.addEventListener('resize', schedule);
+      schedule();
+    }
+
     // Interactive scorecards (0–2 per row).
     document.querySelectorAll('[data-scorecard]').forEach((card) => {
       const rows = Array.from(card.querySelectorAll('[data-score-row]'));
