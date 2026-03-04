@@ -430,11 +430,14 @@ button.share-link {
   align-items: center;
   gap: 10px;
   min-width: 0;
+  margin-bottom: 0.5rem;
 }
 
 .article-title-row h1 {
   flex: 1 1 auto;
   min-width: 0;
+  margin: 0;
+  line-height: 1.2;
 }
 
 .zapier-icon {
