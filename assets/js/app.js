@@ -12,22 +12,27 @@
     {
       title: 'Feature led building vs user led building',
       slug: 'feature-led-building-vs-user-led-building',
-      monthYear: 'March 2026',
+      monthYear: 'January 2026',
     },
     {
       title: 'What I do, and what I delegate to AI',
       slug: 'what-i-do-and-what-i-delegate-to-ai',
-      monthYear: 'February 2026',
+      monthYear: 'January 2026',
     },
     {
       title: 'The post visual web',
       slug: 'post-visual-web',
-      monthYear: 'February 2026',
+      monthYear: 'December 2025',
     },
     {
       title: 'Linear expectations, exponential games',
       slug: 'linear-expectations-exponential-games',
-      monthYear: 'February 2026',
+      monthYear: 'December 2025',
+    },
+    {
+      title: 'From pain to product',
+      slug: 'from-pain-to-product',
+      monthYear: 'December 2025',
     },
   ];
 
