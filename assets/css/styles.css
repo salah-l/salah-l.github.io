@@ -524,8 +524,8 @@ button.share-link {
 .scorecard__btn {
   width: 18px;
   height: 18px;
-  border-radius: 999px;
-  border: 1px solid var(--rule);
+  border-radius: 0;
+  border: 0;
   background: transparent;
   color: var(--text);
   cursor: pointer;
@@ -536,7 +536,11 @@ button.share-link {
 }
 
 .scorecard__btn:hover {
-  border-color: var(--text-muted);
+  color: var(--text-muted);
+}
+
+.scorecard__btn:active {
+  transform: translateY(1px);
 }
 
 .scorecard__btn:disabled {
