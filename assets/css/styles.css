@@ -466,6 +466,10 @@ button.share-link {
   margin-bottom: 0.5rem;
 }
 
+.article-content .article-title-row h1 {
+  margin-bottom: 0;
+}
+
 .article-content h2 {
   margin-top: 2.25rem;
 }
