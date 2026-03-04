@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The post visual web · Salah Louizy</title>
+  <meta name="description" content="The post visual web." />
+  <link rel="icon" href="../../assets/images/me.png" type="image/png">
+  <link rel="apple-touch-icon" href="../../assets/images/me.png">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <script src="../../assets/js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+
+  <div class="article-shell">
+    <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-label="Menu">Menu</button>
+    <aside class="article-sidebar">
+      <div class="theme-switcher" aria-label="Theme">
+        <span class="theme-switcher__thumb" aria-hidden="true"></span>
+        <button type="button" data-theme-switch="light" data-tooltip="Light" aria-pressed="false" aria-label="Light">
+          <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2" />
+            <path d="M12 20v2" />
+            <path d="m4.93 4.93 1.41 1.41" />
+            <path d="m17.66 17.66 1.41 1.41" />
+            <path d="M2 12h2" />
+            <path d="M20 12h2" />
+            <path d="m6.34 17.66-1.41 1.41" />
+            <path d="m19.07 4.93-1.41 1.41" />
+          </svg>
+        </button>
+        <button type="button" data-theme-switch="dark" data-tooltip="Dark" aria-pressed="false" aria-label="Dark">
+          <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+          </svg>
+        </button>
+        <button type="button" data-theme-switch="paper" data-tooltip="Paper" aria-pressed="false" aria-label="Paper">
+          <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" />
+            <path d="M14 2v5a1 1 0 0 0 1 1h5" />
+            <path d="M10 9H8" />
+            <path d="M16 13H8" />
+            <path d="M16 17H8" />
+          </svg>
+        </button>
+        <button type="button" data-theme-switch="blueprint" data-tooltip="Blueprint" aria-pressed="false" aria-label="Blueprint">
+          <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="m12.99 6.74 1.93 3.44" />
+            <path d="M19.136 12a10 10 0 0 1-14.271 0" />
+            <path d="m21 21-2.16-3.84" />
+            <path d="m3 21 8.02-14.26" />
+            <circle cx="12" cy="5" r="2" />
+          </svg>
+        </button>
+      </div>
+
+      <nav class="article-nav" aria-label="Portfolio">
+        <a href="../../index.html">Home</a>
+        <a href="../../about.html">About</a>
+        <a href="../../interest.html">Interest</a>
+        <a href="../../projects.html">Projects</a>
+        <a href="../../shelf.html">Shelf</a>
+        <a href="../../hire.html">Hire me</a>
+      </nav>
+
+      <div class="article-nav-current">
+        <a href="index.html" aria-current="page">The post visual web</a>
+      </div>
+    </aside>
+
+    <div class="container">
+      <main id="content" class="article-content">
+        <article>
+          <header class="article-header">
+            <h1>The post visual web</h1>
+            <p class="subtitle">March 4, 2026 · 6 min read</p>
+          </header>
+
+          <p>There’s a quiet assumption baked into most web development: that humans will keep visiting websites with their eyes.</p>
+
+          <p>I’m not convinced that’s true for the next decade.</p>
+
+          <p>I think the dominant interface to the internet is shifting from visual browsing to natural language querying. And once that becomes the default, the most valuable websites won’t be the ones that look impressive. They’ll be the ones that are easy for machines to ingest, reason over, and cite.</p>
+
+          <p>In other words: the web becomes less of a showroom and more of a dataset.</p>
+
+          <h2>LLMS.txt, MCP, and the new distribution layer</h2>
+
+          <p>If you want a single heuristic for where things are going, it’s this: any framework that pairs an LLMS.txt with an MCP server pointed at its documentation is already living in the future.</p>
+
+          <p>Not because AI is trendy, but because it acknowledges a change in the primary consumer of docs. Historically, docs were written for humans. The ideal doc experience was visual: navigation, search, code blocks, examples, cross links.</p>
+
+          <p>In a natural language first world, the ideal doc experience is semantic: structured, stable, parseable, and fast to retrieve.</p>
+
+          <p>LLMS.txt is a signal. MCP is the pipe. Together they turn a documentation website into an interface that an agent can use as a reliable knowledge source, not just a page a human reads.</p>
+
+          <p>And once you see docs this way, it becomes obvious that it won’t stop at docs.</p>
+
+          <h2>The real shift: from visiting to asking</h2>
+
+          <p>Today, if I want a haircut, the old internet asks me to do something weird.</p>
+
+          <ul class="bullets">
+            <li>open a browser</li>
+            <li>search for Paul’s Barbers</li>
+            <li>click through a map pack</li>
+            <li>open a website</li>
+            <li>scan for prices, hours, location, reviews, booking</li>
+          </ul>
+
+          <p>That workflow is visual because the interface is visual. But the intent isn’t visual. The intent is: Is Paul good, nearby, and available?</p>
+
+          <p>In the near future, I won’t visit Paul’s website first. I’ll ask my LLM: Is Paul’s Barbers good? What are the prices? Can I book for Friday? Is parking annoying? Do they do fades well?</p>
+
+          <p>The LLM will answer by synthesizing data from places it trusts: reviews, maps, socials, and, if Paul is smart in this future, Paul’s own website.</p>
+
+          <p>And here’s the punchline: Paul’s best website for that world is boring.</p>
+
+          <p>Static HTML. Minimal images. Minimal interaction. Clean headings. Clear prices. Clear hours. Clear location. Clear booking link. A page that loads instantly and reads like a structured fact sheet.</p>
+
+          <p>Perfect for bots. Great for humans too, but optimized for the actual distribution channel: the model.</p>
+
+          <h2>Websites as semantic pages</h2>
+
+          <p>I think websites will converge toward flat, semantic info with light CSS.</p>
+
+          <p>Not because design stops mattering, but because the job of the website changes.</p>
+
+          <p>Right now, websites do three things at once.</p>
+
+          <ul class="bullets">
+            <li>persuade humans</li>
+            <li>rank on Google</li>
+            <li>serve as a brand artifact</li>
+          </ul>
+
+          <p>In an agent mediated world, websites start doing something else.</p>
+
+          <p>They become canonical sources of truth that machines can query.</p>
+
+          <p>That changes the architecture. It changes the incentives. It changes what good UX even means.</p>
+
+          <p>Good UX becomes: low latency, high clarity, and high parseability.</p>
+
+          <p>A beautiful parallax animation is irrelevant if the model can’t reliably extract your prices and hours without executing a JavaScript carnival.</p>
+
+          <h2>JavaScript is not free anymore</h2>
+
+          <p>Yes, bots can read and render JavaScript. But it’s slow.</p>
+
+          <p>And this is the subtle point a lot of people miss: the constraint isn’t whether a bot can do it. The constraint is whether it’s acceptable at scale, within latency budgets, while still producing a good response time.</p>
+
+          <p>If an agent is synthesizing an answer from 20 sources, and 8 of them require heavy client side rendering to extract basic facts, the agent either:</p>
+
+          <ul class="bullets">
+            <li>slows down</li>
+            <li>avoids those sources</li>
+            <li>uses partial data and becomes less accurate</li>
+          </ul>
+
+          <p>None of those outcomes are good for you.</p>
+
+          <p>So JavaScript becomes something you spend like money. You use it when it buys you something real. Not because you can.</p>
+
+          <p>This pushes the web toward an older truth that we’ve collectively forgotten: native HTML is the fastest API.</p>
+
+          <h2>My advice: build for machines without forgetting humans</h2>
+
+          <p>If I were building a new framework today, or even evolving a design system, my goal would be simple.</p>
+
+          <p>Ship blazing fast, semantic HTML by default. Use CSS heavily. Use as little JavaScript as possible. Treat interactivity as a scarce resource.</p>
+
+          <p>This is why Astro is such a strong meta framework example. It’s opinionated about shipping less JavaScript. It makes the default outcome closer to what both humans and agents want: fast pages with clear structure.</p>
+
+          <p>If I were working on something like ShadCN or MUI, I’d orient the roadmap around the same principle: components that degrade gracefully into semantic markup, minimal client runtime, and predictable structure.</p>
+
+          <p>The aesthetic layer matters, but it should sit on top of a stable semantic core. The semantic core is what the model reads. The aesthetic layer is what the human enjoys if they still choose to visit.</p>
+
+          <h2>The uncomfortable prediction</h2>
+
+          <p>The uncomfortable implication is that the internet as we know it may become a secondary view.</p>
+
+          <p>Humans won’t stop using screens, but screens stop being the primary router of attention. Natural language becomes the front door. The website becomes the backing store.</p>
+
+          <p>You won’t win by building the prettiest site.</p>
+
+          <p>You’ll win by being the source your user’s model trusts when it answers: Should I go to Paul’s Barbers?</p>
+
+          <p>And in that world, boring is a feature.</p>
+
+          <p>A static page with clear, semantic information and light CSS is not a compromise. It’s an adaptation to a new distribution layer.</p>
+
+          <p>The web doesn’t become less human. It becomes less visual.</p>
+
+          <p>And the developers who internalize that early will build the frameworks everyone else eventually migrates to.</p>
+        </article>
+
+        <section class="more-articles" data-more-articles data-current-slug="post-visual-web" data-articles-base="/blog/">
+          <h2>More articles</h2>
+          <div data-more-articles-body></div>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
