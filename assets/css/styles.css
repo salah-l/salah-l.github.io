@@ -484,7 +484,7 @@ button.share-link {
 .scorecard__row {
   display: flex;
   gap: 12px;
-  align-items: flex-start;
+  align-items: center;
   padding: 10px 0;
   border-bottom: 1px solid var(--rule);
 }
@@ -494,18 +494,37 @@ button.share-link {
 }
 
 .scorecard__controls {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 18px auto;
+  grid-template-rows: 18px 18px;
+  column-gap: 8px;
+  row-gap: 4px;
   align-items: center;
-  gap: 6px;
   flex: 0 0 auto;
-  width: 34px;
+  width: auto;
+}
+
+.scorecard__controls [data-score-up] {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.scorecard__controls [data-score-down] {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.scorecard__controls [data-score-value] {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  justify-self: start;
 }
 
 .scorecard__btn {
-  width: 28px;
-  height: 22px;
-  border-radius: 8px;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
   border: 1px solid var(--rule);
   background: transparent;
   color: var(--text);
@@ -513,6 +532,7 @@ button.share-link {
   line-height: 1;
   font: inherit;
   font-weight: 500;
+  font-size: 10px;
 }
 
 .scorecard__btn:hover {
