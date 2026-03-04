@@ -425,6 +425,38 @@ button.share-link {
   margin-bottom: 2rem;
 }
 
+.article-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.article-title-row h1 {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.zapier-icon {
+  width: 20px;
+  height: 20px;
+  display: block;
+  animation: zapier-spin 3.2s linear infinite;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+@keyframes zapier-spin {
+  from { transform: rotateZ(0deg); }
+  to { transform: rotateZ(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zapier-icon {
+    animation: none;
+  }
+}
+
 .article-content h1 {
   font-size: 22px;
   font-weight: 700;
