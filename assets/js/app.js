@@ -12,32 +12,32 @@
     {
       title: 'Saturation is where the money is',
       slug: 'saturation-is-where-the-money-is',
-      monthYear: 'January 2026',
+      monthYear: 'Jan 2026',
     },
     {
       title: 'Feature led building vs user led building',
       slug: 'feature-led-building-vs-user-led-building',
-      monthYear: 'January 2026',
+      monthYear: 'Jan 2026',
     },
     {
       title: 'What I do, and what I delegate to AI',
       slug: 'what-i-do-and-what-i-delegate-to-ai',
-      monthYear: 'January 2026',
+      monthYear: 'Jan 2026',
     },
     {
       title: 'The post visual web',
       slug: 'post-visual-web',
-      monthYear: 'December 2025',
+      monthYear: 'Dec 2025',
     },
     {
       title: 'Linear expectations, exponential games',
       slug: 'linear-expectations-exponential-games',
-      monthYear: 'December 2025',
+      monthYear: 'Dec 2025',
     },
     {
       title: 'From pain to product',
       slug: 'from-pain-to-product',
-      monthYear: 'December 2025',
+      monthYear: 'Dec 2025',
     },
   ];
 
@@ -177,7 +177,7 @@
         activeEl = el;
         if (hoverTimer) clearTimeout(hoverTimer);
 
-        const delay = (el.closest('.tools-grid') || el.closest('[data-share-bar]')) ? 250 : 2000;
+        const delay = (el.closest('.tools-grid') || el.closest('[data-share-bar]') || el.closest('.list-item--articles')) ? 250 : 2000;
         hoverTimer = setTimeout(() => {
           if (activeEl === el) showTooltip(el);
         }, delay);
@@ -220,17 +220,20 @@
       const ul = document.createElement('ul');
       items.forEach((a) => {
         const li = document.createElement('li');
+        li.className = 'list-item list-item--articles';
 
+        const titleWrap = document.createElement('span');
         const link = document.createElement('a');
         link.href = `${base}${a.slug}/`;
         link.textContent = a.title;
+        link.setAttribute('data-tooltip', a.title);
+        titleWrap.appendChild(link);
 
         const meta = document.createElement('span');
-        meta.className = 'subtitle';
+        meta.className = 'item-meta';
         meta.textContent = a.monthYear || '';
 
-        li.appendChild(link);
-        li.appendChild(document.createTextNode(' '));
+        li.appendChild(titleWrap);
         li.appendChild(meta);
         ul.appendChild(li);
       });
