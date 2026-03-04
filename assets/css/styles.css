@@ -474,6 +474,75 @@ button.share-link {
   margin-top: 2.25rem;
 }
 
+.scorecard {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.scorecard__row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.scorecard__row:last-child {
+  border-bottom: 0;
+}
+
+.scorecard__controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+  width: 34px;
+}
+
+.scorecard__btn {
+  width: 28px;
+  height: 22px;
+  border-radius: 8px;
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  line-height: 1;
+  font: inherit;
+  font-weight: 500;
+}
+
+.scorecard__btn:hover {
+  border-color: var(--text-muted);
+}
+
+.scorecard__btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.scorecard__btn:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+}
+
+.scorecard__value {
+  font-weight: 700;
+  font-size: 0.95rem;
+  min-width: 1ch;
+}
+
+.scorecard__label {
+  flex: 1 1 auto;
+}
+
+.scorecard__summary {
+  padding-top: 8px;
+}
+
 .more-articles {
   margin-top: 3.5rem;
   padding-top: 2rem;

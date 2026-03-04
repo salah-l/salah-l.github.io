@@ -351,5 +351,80 @@
         });
       }
     });
+
+    // Interactive scorecards (0–2 per row).
+    document.querySelectorAll('[data-scorecard]').forEach((card) => {
+      const rows = Array.from(card.querySelectorAll('[data-score-row]'));
+      const threshold = Number(card.getAttribute('data-threshold') || '15');
+      const totalEl = card.querySelector('[data-score-total]');
+      const maxEl = card.querySelector('[data-score-max]');
+      const verdictEl = card.querySelector('[data-score-verdict]');
+      const max = rows.length * 2;
+
+      function clamp(n) {
+        return Math.max(0, Math.min(2, n));
+      }
+
+      function getRowScore(row) {
+        const raw = row.getAttribute('data-score') || '0';
+        const n = Number(raw);
+        return Number.isFinite(n) ? clamp(n) : 0;
+      }
+
+      function setRowScore(row, score) {
+        const s = clamp(score);
+        row.setAttribute('data-score', String(s));
+        const val = row.querySelector('[data-score-value]');
+        if (val) val.textContent = String(s);
+
+        const up = row.querySelector('[data-score-up]');
+        const down = row.querySelector('[data-score-down]');
+        if (up) up.disabled = s >= 2;
+        if (down) down.disabled = s <= 0;
+      }
+
+      function render() {
+        let total = 0;
+        rows.forEach((row) => {
+          const s = getRowScore(row);
+          total += s;
+          setRowScore(row, s);
+        });
+
+        if (maxEl) maxEl.textContent = String(max);
+        if (totalEl) totalEl.textContent = String(total);
+
+        if (verdictEl) {
+          if (total >= threshold) {
+            verdictEl.textContent = 'Verdict: Worth deeper work';
+          } else {
+            verdictEl.textContent = 'Verdict: Not yet';
+          }
+        }
+      }
+
+      rows.forEach((row) => {
+        setRowScore(row, getRowScore(row));
+
+        const up = row.querySelector('[data-score-up]');
+        const down = row.querySelector('[data-score-down]');
+
+        if (up) {
+          up.addEventListener('click', () => {
+            setRowScore(row, getRowScore(row) + 1);
+            render();
+          });
+        }
+
+        if (down) {
+          down.addEventListener('click', () => {
+            setRowScore(row, getRowScore(row) - 1);
+            render();
+          });
+        }
+      });
+
+      render();
+    });
   });
 })();
