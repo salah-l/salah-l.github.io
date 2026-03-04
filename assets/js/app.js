@@ -152,11 +152,20 @@
       const rect = el.getBoundingClientRect();
       const padding = 10;
       const ttRect = tooltip.getBoundingClientRect();
+      const inShareBar = Boolean(el.closest('[data-share-bar]'));
       let left = rect.left + rect.width / 2 - ttRect.width / 2;
       let top = rect.top - ttRect.height - 10;
 
-      left = Math.max(padding, Math.min(left, window.innerWidth - ttRect.width - padding));
-      if (top < padding) top = rect.bottom + 10;
+      if (inShareBar) {
+        left = rect.left - ttRect.width - 10;
+        top = rect.top + rect.height / 2 - ttRect.height / 2;
+
+        if (left < padding) left = rect.right + 10;
+        top = Math.max(padding, Math.min(top, window.innerHeight - ttRect.height - padding));
+      } else {
+        left = Math.max(padding, Math.min(left, window.innerWidth - ttRect.width - padding));
+        if (top < padding) top = rect.bottom + 10;
+      }
 
       tooltip.style.left = `${left}px`;
       tooltip.style.top = `${top}px`;
@@ -168,7 +177,7 @@
         activeEl = el;
         if (hoverTimer) clearTimeout(hoverTimer);
 
-        const delay = el.closest('.tools-grid') ? 250 : 2000;
+        const delay = (el.closest('.tools-grid') || el.closest('[data-share-bar]')) ? 250 : 2000;
         hoverTimer = setTimeout(() => {
           if (activeEl === el) showTooltip(el);
         }, delay);
@@ -227,6 +236,112 @@
       });
 
       body.appendChild(ul);
+    });
+
+    // Article pages: social share sidebar.
+    function getCanonicalUrl() {
+      const canonical = document.querySelector('link[rel="canonical"]');
+      if (canonical && canonical.href) return canonical.href;
+
+      const ogUrl = document.querySelector('meta[property="og:url"]');
+      if (ogUrl) return ogUrl.getAttribute('content') || window.location.href;
+
+      return window.location.href;
+    }
+
+    function getShareTitle() {
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      const rawOg = ogTitle ? (ogTitle.getAttribute('content') || '') : '';
+      if (rawOg.trim()) return rawOg.trim();
+
+      const h1 = document.querySelector('article h1');
+      const rawH1 = h1 ? (h1.textContent || '') : '';
+      if (rawH1.trim()) return rawH1.trim();
+
+      const t = document.title || '';
+      return t.split(' · ')[0].trim() || t;
+    }
+
+    // Mobile: render share bar directly above the title by cloning the desktop sidebar.
+    const shareSidebar = document.querySelector('.share-sidebar[data-share-bar]');
+    const articleHeader = document.querySelector('article .article-header');
+    if (shareSidebar && articleHeader && !document.querySelector('.share-inline[data-share-bar]')) {
+      const inner = shareSidebar.querySelector('.share-sidebar__inner');
+      if (inner) {
+        const inline = document.createElement('aside');
+        inline.className = 'share-inline';
+        inline.setAttribute('aria-label', 'Share this article');
+        inline.setAttribute('data-share-bar', '');
+
+        const titleEl = document.createElement('div');
+        titleEl.className = 'share-inline__title subtitle';
+        titleEl.textContent = 'Share this article';
+
+        inline.appendChild(titleEl);
+        inline.appendChild(inner.cloneNode(true));
+        articleHeader.parentNode.insertBefore(inline, articleHeader);
+      }
+    }
+
+    document.querySelectorAll('[data-share-bar]').forEach((bar) => {
+      const url = getCanonicalUrl();
+      const title = getShareTitle();
+      const text = `${title} — ${url}`;
+      const emailBody = `${title}\n\n${url}`;
+
+      bar.querySelectorAll('[data-share-service]').forEach((a) => {
+        const service = a.getAttribute('data-share-service') || '';
+        let href = '#';
+
+        if (service === 'x') {
+          href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`;
+        } else if (service === 'linkedin') {
+          href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+        } else if (service === 'facebook') {
+          href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+        } else if (service === 'whatsapp') {
+          href = `https://wa.me/?text=${encodeURIComponent(text)}`;
+        } else if (service === 'email') {
+          href = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(emailBody)}`;
+        } else if (service === 'telegram') {
+          href = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
+        } else if (service === 'reddit') {
+          href = `https://www.reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`;
+        } else if (service === 'hn') {
+          href = `https://news.ycombinator.com/submitlink?u=${encodeURIComponent(url)}&t=${encodeURIComponent(title)}`;
+        }
+
+        a.setAttribute('href', href);
+      });
+
+      const copyBtn = bar.querySelector('[data-share-copy]');
+      if (copyBtn) {
+        copyBtn.addEventListener('click', async () => {
+          try {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              await navigator.clipboard.writeText(url);
+              return;
+            }
+          } catch {
+            // ignore
+          }
+
+          const ta = document.createElement('textarea');
+          ta.value = url;
+          ta.setAttribute('readonly', '');
+          ta.style.position = 'fixed';
+          ta.style.left = '-9999px';
+          ta.style.top = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          try {
+            document.execCommand('copy');
+          } catch {
+            // ignore
+          }
+          document.body.removeChild(ta);
+        });
+      }
     });
   });
 })();

@@ -320,6 +320,107 @@ img {
   min-width: 0;
 }
 
+.share-inline {
+  display: none;
+  margin-bottom: 14px;
+}
+
+.share-inline__title {
+  margin-bottom: 8px;
+}
+
+.share-sidebar {
+  position: sticky;
+  top: 24px;
+  align-self: start;
+  padding-top: 10vh;
+  width: 44px;
+}
+
+.share-sidebar__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 6px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--container-bg);
+}
+
+.share-link {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--text);
+  border: 1px solid var(--rule);
+  background: transparent;
+}
+
+button.share-link {
+  cursor: pointer;
+  font: inherit;
+  appearance: none;
+}
+
+.share-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+.share-sidebar [data-share-service="x"]:hover {
+  color: #000000;
+}
+
+.share-sidebar [data-share-service="linkedin"]:hover {
+  color: #0A66C2;
+}
+
+.share-sidebar [data-share-service="facebook"]:hover {
+  color: #1877F2;
+}
+
+.share-sidebar [data-share-service="whatsapp"]:hover {
+  color: #25D366;
+}
+
+.share-sidebar [data-share-service="email"]:hover {
+  color: #6b7280;
+}
+
+.share-sidebar [data-share-service="telegram"]:hover {
+  color: #26A5E4;
+}
+
+.share-sidebar [data-share-service="reddit"]:hover {
+  color: #FF4500;
+}
+
+.share-sidebar [data-share-service="hn"]:hover {
+  color: #FF6600;
+}
+
+.share-sidebar [data-share-copy]:hover {
+  color: var(--text);
+}
+
+.share-link:hover {
+  border-color: currentColor;
+}
+
+.share-link:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+}
+
 .article-header {
   margin-bottom: 2rem;
 }
@@ -364,6 +465,21 @@ img {
 
   .article-shell .menu-toggle {
     align-self: flex-end;
+  }
+
+  .share-sidebar {
+    display: none;
+  }
+
+  .share-inline {
+    display: block;
+  }
+
+  .share-inline .share-sidebar__inner {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    border-radius: 16px;
   }
 
   html.menu-open .article-sidebar {
