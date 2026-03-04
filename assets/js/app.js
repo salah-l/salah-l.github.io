@@ -152,9 +152,11 @@
         if (document.body.classList.contains('modal-open')) return;
         activeEl = el;
         if (hoverTimer) clearTimeout(hoverTimer);
+
+        const delay = el.closest('.tools-grid') ? 250 : 2000;
         hoverTimer = setTimeout(() => {
           if (activeEl === el) showTooltip(el);
-        }, 2000);
+        }, delay);
       });
       el.addEventListener('mouseleave', hideTooltip);
       el.addEventListener('click', hideTooltip);
