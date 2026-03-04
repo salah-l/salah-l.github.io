@@ -1,0 +1,11 @@
+/* TEAM */
+Name: Salah Louizy
+Role: Senior Web Developer
+Location: Casablanca, Morocco
+Site: https://salah.louizy.com/
+Contact: salah@louizy.com
+
+/* SITE */
+Hosting: GitHub Pages
+Standards: HTML5, CSS3
+Language: English
