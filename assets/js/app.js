@@ -10,6 +10,11 @@
 
   const ARTICLES = [
     {
+      title: 'Driving free traffic by giving things away',
+      slug: 'driving-free-traffic-by-giving-things-away',
+      monthYear: 'Mar 2026',
+    },
+    {
       title: 'How to find business ideas with Zapier',
       slug: 'how-to-find-business-ideas-with-zapier',
       monthYear: 'Mar 2026',
