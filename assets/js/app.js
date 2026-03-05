@@ -272,7 +272,7 @@
 
     // Mobile: render share bar directly above the title by cloning the desktop sidebar.
     const shareSidebar = document.querySelector('.share-sidebar[data-share-bar]');
-    const articleHeader = document.querySelector('article .article-header');
+    const articleHeader = document.querySelector('.article-content .article-header');
     if (shareSidebar && articleHeader && !document.querySelector('.share-inline[data-share-bar]')) {
       const inner = shareSidebar.querySelector('.share-sidebar__inner');
       if (inner) {
